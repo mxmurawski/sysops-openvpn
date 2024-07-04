@@ -1,0 +1,30 @@
+# Set no password mode - This will create the entire PKI without passwords.
+# This can be better managed by choosing which entity private keys should be
+# encrypted with the following command line options:
+# Global option '--no-pass' or command option 'nopass'.
+set_var EASYRSA_NO_PASS 1
+
+# Choose a size in bits for your keypairs. The recommended value is 2048.
+# Using 2048-bit keys is considered more than sufficient for many years into
+# the future. Larger keysizes will slow down TLS negotiation and make key/DH
+# param generation take much longer. Values up to 4096 should be accepted by
+# most software. Only used when the crypto alg is rsa, see below.
+set_var EASYRSA_KEY_SIZE        2048
+
+# The default crypto mode is rsa; ec can enable elliptic curve support.
+# Note that not all software supports ECC, so use care when enabling it.
+# Choices for crypto alg are: (each in lower-case)
+#  * rsa
+#  * ec
+#  * ed
+set_var EASYRSA_ALGO            rsa
+
+# In how many days should the root CA key expire?
+set_var EASYRSA_CA_EXPIRE       3650
+
+# In how many days should certificates expire?
+set_var EASYRSA_CERT_EXPIRE     365
+
+# Random serial numbers by default.
+# Set to 'no' for the old incremental serial numbers.
+set_var EASYRSA_RAND_SN "yes"
