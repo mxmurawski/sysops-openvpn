@@ -14,7 +14,7 @@ ln -s /usr/share/easy-rsa/* /etc/openvpn/easy-rsa/
 ```
 Create /etc/openvpn/easy-rsa/vars file by executing below command:
 ```
-cat vars > /etc/openvpn/easy-rsa/vars
+cat /path/to/repo/vars > /etc/openvpn/easy-rsa/vars
 ```
 Initialize PKI and build certificate authority by executing below command:
 ```
@@ -54,9 +54,9 @@ Sign client's certificate request by executing below command:
 ```
 You will be prompted to confirm by typing "yes". Next You have to provide CA password.
 
-Copy server.conf file to /etc/openvpn by executing below command:
+Copy /path/to/repo/server.conf file to /etc/openvpn by executing below command:
 ```
-cp server.conf /etc/openvpn/
+cp /path/to/repo/server.conf /etc/openvpn/
 ```
 Adjust this file to your own needs:
 ```
@@ -116,9 +116,9 @@ The last step to enable and start VPN server server is to execute below command:
 ```
 systemctl enable openvpn@server.service && systemctl start openvpn@server.service
 ```
-Now your VPN server is running. Let's prepare for creating users' configuration .ovpn files automatically. To do this, create /etc/openvpn/client-configs directory, assign proper file permissions and copy make_config.sh file by executing bellow command:
+Now your VPN server is running. Let's prepare for creating users' configuration .ovpn files automatically. To do this, create /etc/openvpn/client-configs directory, assign proper file permissions and copy /path/to/repo/make_config.sh file by executing bellow command:
 ```
-mkdir /etc/openvpn/client-configs ; chmod 700 /etc/openvpn/client-configs ; cp make_config.sh /etc/openvpn/client-configs ; chmod +x /etc/openvpn/client-configs/make_config.sh
+mkdir /etc/openvpn/client-configs ; chmod 700 /etc/openvpn/client-configs ; cp /path/to/repo/make_config.sh /etc/openvpn/client-configs ; chmod +x /etc/openvpn/client-configs/make_config.sh
 ```
 Execute script with the name of client certificate's name which is client1 by executing below command:
 ```
